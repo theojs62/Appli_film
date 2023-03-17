@@ -1,0 +1,12 @@
+#stage 1
+# BASE IMAGE with an alias #
+FROM node:lts as node
+WORKDIR /app
+
+# Install Angular CLI to run Build #
+RUN npm install -g @angular/cli
+
+COPY package.json .
+RUN npm install
+COPY . .
+CMD ng serve --host 0.0.0.0
